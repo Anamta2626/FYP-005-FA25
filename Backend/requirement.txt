@@ -1,0 +1,21 @@
+# Flask web framework
+Flask==2.3.3
+
+# For handling CORS (React frontend requests)
+flask-cors # latest compatible with Flask 2.3.x
+
+# Production WSGI server for Flask
+gunicorn==21.2.0
+
+# Common ML/Data packages
+numpy
+pandas
+scikit-learn
+torch>=2.0.0
+torchvision>=0.15.0
+timm>=0.9.0
+
+# Optional (if you are using image processing or OpenCV for Dysgraphia)
+opencv-python==4.8.1.78
+Pillow
+

@@ -1,0 +1,641 @@
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* catch any leftover overflow */
+  font-family: "Inter", sans-serif;
+}
+
+/* ======================================
+   Hero Section and Navbar
+====================================== */
+
+/* Transparent Navbar */
+.transparent-nav {
+  background: transparent !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.transparent-nav .nav-link {
+  position: relative;
+  color: #ffffff !important;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Hover underline animation */
+.transparent-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+/* When hovered or active */
+.transparent-nav .nav-link:hover::after,
+.transparent-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* Hover color animation */
+.transparent-nav .nav-link:hover {
+  color: #00e0ff !important;
+}
+
+/* Sign-up button hover effect */
+.transparent-nav .btn-light:hover {
+  background-color: #00bfff;
+  color: #fff;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+/* Hide navbar on scroll */
+.transparent-nav {
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+
+.transparent-nav.hide-nav {
+  transform: translateY(-100%);
+}
+
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background: linear-gradient(to right, rgba(0, 123, 255, 0.75), rgba(0, 200, 200, 0.6)),
+    url('../../assets/Hero_Image.jpeg') no-repeat center 70%;
+  background-size: cover;
+  background-attachment: fixed; /* subtle parallax */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100vw; /* ✅ make full viewport width */
+
+    /* padding-top: 20px;  */
+    padding-bottom: 50px;
+    
+}
+
+.Home-Btn{
+  color : rgba(0, 123, 255, 0.75);
+  font-size: 16px;
+  
+}
+
+
+
+/* Curved Bottom */
+.hero-bottom-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 120px; /* adjust wave height */
+  overflow: hidden;
+  line-height: 0;
+  z-index: 0;
+}
+.hero-bottom-wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* ======================================
+   Quote Section with Side Images
+====================================== */
+.quote-section {
+  background-color: #fff; 
+  padding: 100px 0;
+}
+
+.quote-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center; /* vertically center images with quote */
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: nowrap; /* prevent wrapping on larger screens */
+}
+
+/* -------- Left Images -------- */
+.quote-images {
+  position: relative;
+  width: 50%;
+  min-height: 350px;
+}
+
+.quote-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  /* border: 4px solid #ffffff; */
+  background-color: #fff; /* fallback */
+}
+
+/* Position the 3 images like floating circles */
+.img1 {
+  top: 20px;
+  left: 20px;
+}
+
+.img2 {
+  top: 100px;
+  left: 250px;
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  object-fit: cover;
+
+  /* Trifoil / 4-corner curved shape */
+  clip-path: polygon(
+    25% 0%, 75% 0%, 
+    100% 25%, 100% 75%, 
+    75% 100%, 25% 100%, 
+    0% 75%, 0% 25%
+  );
+
+  border: 4px solid #fff;
+}
+
+
+
+.img3 {
+  top: 250px;
+  left: 60px;
+    width: 150px;
+  height: 150px;
+}
+
+/* -------- Right Quote -------- */
+.quote-content {
+  width: 50%;
+  color: #283789;
+}
+
+.quote-content h5 {
+  font-size: 36px;        /* same size */
+  font-weight: 800;       /* bold like the About heading */
+  color: #283789;         /* same deep blue tone */
+  line-height: 1.3;       
+  margin-bottom: 20px;
+  font-family: "Fjalla One", "Open Sans", 
+               -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", "Helvetica Neue", Arial, sans-serif,
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Paragraph styled like about-desc */
+.quote-content p {
+  font-size: 18px;
+  color: #1b71a1;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 520px;        /* same text width as About */
+  text-align: justify; /* better alignment */
+}
+
+
+.quote-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid #ff7f63;
+  border-radius: 30px;
+  background: transparent;
+  color: #ff7f63;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.quote-btn:hover {
+  background-color: #ff7f63;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 992px) {
+.quote-wrapper {
+    flex-direction: column; /* stack only on small screens */
+    text-align: center;
+    flex-wrap: wrap;
+  }
+
+ .quote-images,
+  .quote-content {
+    width: 100%;
+    margin-bottom: 30px; /* spacing between images and quote */
+  }
+
+  .quote-text h5 {
+    font-size: 24px;
+  }
+
+  .quote-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .img1 { top: 0; left: 50px; }
+  .img2 { top: 120px; left: 120px; }
+  .img3 { bottom: 0; left: 80px; }
+}
+
+
+/* AboutUs */
+/* WRAPPER */
+.about-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* TOP BANNER */
+.about-top-banner {
+  width: 100%;
+  height: 150px;
+  background-image: url("../../assets/about-us.png");
+  padding: 40px 0; /* Remove commas, use spaces */
+  background-size: contain; /* or cover depending on your need */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.about-top-title {
+  font-size: 50px;
+  font-weight: 700;
+  color: #0047AB;
+}
+
+/* MAIN SECTION */
+.about-section {
+  width: 100%;
+  /* padding: 80px 0; */
+  padding-top: 52px;
+  background-image: url("../../assets/about-bg.png");
+  background-size: cover;      /* ensures full coverage */
+  background-position: center; /* centers the image */
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+}
+
+.about-content {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* LEFT SIDE */
+.about-left {
+  flex: 1;               /* keep proportional size */
+  padding: 0 20px;       /* smaller padding inside text box */
+  box-sizing: border-box; /* ensures padding doesn’t shrink container */
+}
+.about-text-side {
+  flex: 1;             /* make it smaller */
+  max-width: 45%;      /* smaller than image side */
+}
+
+.about-main-title {
+  font-size: 36px;
+  font-weight: 800;
+   color: #283789;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  font-family: "Fjalla One", "Open Sans", -apple-system, BlinkMacSystemFont, 
+               "Segoe UI", "Helvetica Neue", Arial, sans-serif, 
+               "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.about-desc {
+  font-size: 18px;
+  color: #1b71a1;
+  margin-bottom: 30px;
+  max-width: 520px;
+}
+
+.learn-btn {
+  color: #283789;            /* text color */
+  background-color: #fff;     /* optional background */
+  border: 1px solid #283789;  /* border same as text */
+  border-radius: 20px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* RIGHT SIDE IMAGE */
+.about-right .doctor-img {
+  width: 100%;           /* fill most of container */
+  max-width: 550px;      /* make image bigger */
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.about-right {
+  flex: 1.5;            /* bigger than text side */
+  max-width: 65%;       /* increase container width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Contact us */
+.ContantUs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+/* Desktop / tablet view */
+@media (min-width: 768px) {
+  .ContantUs {
+    flex-direction: row;
+    gap: 38rem;
+  }
+}
+
+/* Motivational prac */
+/* WRAPPER */
+.about-wrapper {
+  background: #fff;
+}
+
+/* FLOAT SMALL IMAGE */
+.small-img {
+  width: 230px;
+  height: 160px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 50px;
+  left: -20px;
+  border-radius: 12px;
+  border: 5px solid white;
+}
+
+.main-img {
+  width: 500px;       /* narrower than default */
+  height: 500px;      /* taller */
+  object-fit: cover;  /* keeps image proportionally cropped */
+  border-radius: 12px; /* optional rounded corners */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); optional shadow */
+  display: block;     /* ensures proper layout */
+  margin: 0 auto;     /* centers the image horizontally if needed */
+}
+
+
+/* FLOAT ANIMATION */
+.float-anim {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+/* POINT ICONS */
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.purple {
+  background: #d7c3ff;
+}
+
+.blue {
+  background: #b6dcff;
+}
+
+/* TAG */
+.tag {
+  color: #6a00ff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+/* ANIMATIONS */
+.fade-in {
+  animation: fadeIn 1.3s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE FIXES */
+@media (max-width: 576px) {
+  .small-img {
+    width: 160px;
+    height: 120px;
+    bottom: -20px;
+    left: 0;
+  }
+}
+
+/* Testimonials */
+.testimonial-card {
+  margin: 30px;
+  position: relative;
+  background: transparent;
+}
+
+.quote-icon {
+ width: 30px;
+  height: 30px;
+  background: #ff4d4d;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    position: absolute;  /* float over the image */
+  top: 90px;          /* above the image */
+  left: 170px;  
+
+}
+/* Move carousel arrows OUTSIDE */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Push left arrow outward */
+.carousel-control-prev {
+  left: -45px;
+}
+
+/* Push right arrow outward */
+.carousel-control-next {
+  right: -45px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 10;
+}
+
+
+/* Make arrow icons WHITE */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0) invert(1); /* pure white arrows */
+  width: 35px;
+  height: 35px;
+}
+
+
+/* OurService  */
+.services-section {
+  background: #0e0a2a;
+}
+
+/* -------- CARD -------- */
+.service-card {
+  background: #1a1740;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s ease;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  background: white;
+  color: #6a00ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  z-index: 2;
+}
+
+.service-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 100px 12px 100px 12px;
+  margin-top: 40px;
+}
+
+.arrow-btn {
+  width: 60px;
+  height: 60px;
+  background: #6a00ff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-left: auto;
+  transition: 0.3s;
+
+}
+
+.arrow-btn:hover {
+  background: #5200c9;
+}
+/* ===== Card Base ===== */
+/* .service-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+} */
+
+/* ===== Animation Start State ===== */
+.animate-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  animation: cardEnter 0.8s ease forwards;
+}
+
+/* ===== One by One Delay ===== */
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.5s;
+}
+
+.delay-3 {
+  animation-delay: 0.8s;
+}
+
+/* ===== Keyframes ===== */
+@keyframes cardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== Hover Effect (soft) ===== */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
